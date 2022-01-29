@@ -2,7 +2,7 @@ version: '3.9'
 services:
 
   mariadb:
-    container_name: $NAME.mariadb
+    container_name: simple.mariadb
     image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: 'default'
@@ -10,9 +10,9 @@ services:
      - 3306:3306
    
   nginx:
-    container_name: $NAME.nginx
+    container_name: simple.nginx
     build:
-      context: ~/docker/$NAME
+      context: ~/docker/simple
       dockerfile: ./Dockerfile
     ports:
       - 8080:8080
@@ -21,7 +21,7 @@ services:
     networks:
       default:
         aliases:
-          - $NAME.local
+          - simple.local
     
   volumes:
-    - project:~/docker/$NAME
+    - project:~/docker/simple
