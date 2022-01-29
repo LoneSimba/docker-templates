@@ -1,11 +1,7 @@
 FROM nginx/unit:1.26.1-php8.1
-# Alternatively, you can download the base image from AWS ECR:
-# FROM public.ecr.aws/nginx/unit:1.26.1-php8.1
 
-# port used by the listener in config.json
 EXPOSE 8080
 
-# application setup
 RUN echo '<?php echo "Hello, PHP on Unit!"; ?>' > /var/www/index.php    \
     && echo '{                                                          \
     "listeners": {                                                      \
