@@ -13,7 +13,6 @@ services:
     container_name: simple.nginx
     build:
       context: ~/docker/simple
-      dockerfile: ./Dockerfile
     ports:
       - 8080:8080
     volumes:
