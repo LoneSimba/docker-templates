@@ -18,6 +18,7 @@ services:
       - 8080:80
     volumes:
       - project:/var/www:delegated
+      - project/nginx-config.json:docker-entrypoint.d/config.json
     networks:
       default:
         aliases:
