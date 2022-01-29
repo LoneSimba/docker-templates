@@ -12,7 +12,3 @@ RUN set -xe                                  \
 
 ADD https://getcomposer.org/installer /tmp/composer
 RUN php /tmp/composer --install-dir=/usr/bin --filename=composer
-
-RUN kill `pidof unitd` && cat /var/log/unit.log
-
-CMD ["unitd", "--no-daemon", "--control", "unix:/var/run/control.unit.sock"]
