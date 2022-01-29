@@ -16,11 +16,8 @@ services:
     ports:
       - 8080:8080
     volumes:
-      - project:/var/www:delegated
+      - ./:/var/www:delegated
     networks:
       default:
         aliases:
           - simple.local
-    
-  volumes:
-    project: ./
