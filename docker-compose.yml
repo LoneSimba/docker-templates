@@ -1,0 +1,27 @@
+version: '3.9'
+services:
+
+  mariadb:
+    container_name: $NAME.mariadb
+    image: mariadb:latest
+    environment:
+      MYSQL_ROOT_PASSWORD: 'default'
+    ports:
+     - 3306:3306
+   
+  nginx:
+    container_name: $NAME.nginx
+    build:
+      context: ~/docker/$NAME
+      dockerfile: ./Dockerfile
+    ports:
+      - 8080:80
+    volumes:
+      - project:/var/www:delegated
+    networks:
+      default:
+        aliases:
+          - $NAME.local
+    
+  volumes:
+    - project:~/docker/$NAME
