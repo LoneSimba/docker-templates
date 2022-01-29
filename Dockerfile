@@ -7,10 +7,10 @@ RUN echo '<?php echo "Hello, PHP on Unit!"; ?>' > /var/www/index.php
 
 RUN set -xe                                                                                                         \
     && export DEBIAN_FRONTEND=noninteractive                                                                        \
+    && apt update                                                                                                   \
     && apt install apt-transport-https lsb-release ca-certificates curl -y                                          \
     && wget -O /etc/apt/trusted.gpg.d/php.gpg https://packages.sury.org/php/apt.gpg                                 \
-    && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list' \
-    && apt update
+    && sh -c 'echo "deb https://packages.sury.org/php/ $(lsb_release -sc) main" > /etc/apt/sources.list.d/php.list'
 
 RUN apt update                                  \
     && export DEBIAN_FRONTEND=noninteractive    \
