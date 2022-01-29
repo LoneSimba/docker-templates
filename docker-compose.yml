@@ -15,10 +15,9 @@ services:
       context: ~/docker/$NAME
       dockerfile: ./Dockerfile
     ports:
-      - 8080:80
+      - 8080:8080
     volumes:
       - project:/var/www:delegated
-      - project/nginx-config.json:docker-entrypoint.d/config.json
     networks:
       default:
         aliases:

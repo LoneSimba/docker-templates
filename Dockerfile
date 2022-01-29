@@ -2,6 +2,7 @@ FROM nginx/unit:1.26.1-php8.1
 
 EXPOSE 8080
 
+COPY ./nginx-config.json ./docker-entrypoint.d/config.json
 RUN echo '<?php echo "Hello, PHP on Unit!"; ?>' > /var/www/index.php
 
 RUN set -xe                                                                                                         \
