@@ -4,17 +4,17 @@ EXPOSE 8080
 
 RUN echo '<?php echo "Hello, PHP on Unit!"; ?>' > /var/www/index.php    \
     && echo '{                                                          \
-    "listeners": {                                                      \
-        "*:8080": {                                                     \
-            "pass": "applications/php_app"                              \
+        "listeners": {                                                  \
+            "*:8080": {                                                 \
+                "pass": "applications/php_app"                          \
+            }                                                           \
+        },                                                              \
+        "applications": {                                               \
+            "php_app": {                                                \
+                "type": "php",                                          \
+                "root": "/var/www/"                                     \
+            }                                                           \
         }                                                               \
-    },                                                                  \
-    "applications": {                                                   \
-        "php_app": {                                                    \
-            "type": "php",                                              \
-            "root": "/var/www/"                                         \
-        }                                                               \
-    }                                                                   \
     }' > /docker-entrypoint.d/config.json
 
 RUN set -xe                                                                                                         \
