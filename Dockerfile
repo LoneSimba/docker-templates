@@ -11,8 +11,7 @@ RUN set -xe                                  \
     && docker-php-ext-enable xdebug
 
 ADD https://getcomposer.org/installer /tmp/composer
-RUN php /tmp/composer --install-dir=/usr/bin --filename=composer \
-    && su -s /bin/bash www-data -c
+RUN php /tmp/composer --install-dir=/usr/bin --filename=composer
 
 RUN kill 'pidof unitd' && cat /var/log/unit.log
 
