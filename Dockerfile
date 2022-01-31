@@ -5,7 +5,7 @@ EXPOSE 8080
 COPY ./nginx-config.json ./docker-entrypoint.d/config.json
 
 RUN apt update &&      \
-    apt install git libzip4 -y 
+    apt install git libzip-dev -y 
 
 RUN set -xe &&				     \
     export DEBIAN_FRONTEND=noninteractive && \
