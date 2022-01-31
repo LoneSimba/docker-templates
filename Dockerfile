@@ -9,8 +9,7 @@ RUN apt update &&      \
 
 RUN set -xe &&				     \
     export DEBIAN_FRONTEND=noninteractive && \
-    pecl install xdebug-3.1.2 zip-1.20.0  && \
-    docker-php-ext-enable xdebug zip
+    docker-php-ext-install xdebug zip pdo_mysql
 
 ADD https://getcomposer.org/installer /tmp/composer
 RUN php /tmp/composer --install-dir=/usr/bin --filename=composer
