@@ -4,13 +4,13 @@ EXPOSE 8080
 
 COPY ./nginx-config.json ./docker-entrypoint.d/config.json
 
+RUN apt update &&      \
+    apt install git libzip4 -y 
+
 RUN set -xe &&				     \
     export DEBIAN_FRONTEND=noninteractive && \
     pecl install xdebug-3.1.2 zip-1.20.0  && \
     docker-php-ext-enable xdebug zip
-
-RUN apt update &&      \
-    apt install git -y \
 
 ADD https://getcomposer.org/installer /tmp/composer
 RUN php /tmp/composer --install-dir=/usr/bin --filename=composer
