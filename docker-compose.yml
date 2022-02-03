@@ -6,18 +6,15 @@ services:
     image: mariadb:latest
     environment:
       MYSQL_ROOT_PASSWORD: 'default'
+      TZ: Europe/Moscow
     ports:
-     - 3306:3306
+     - "3306:3306"
    
   nginx:
     container_name: simple.nginx
     build:
       context: .
     ports:
-      - 8080:8080
+      - "8080:8080"
     volumes:
       - ./:/var/www:delegated
-    networks:
-      default:
-        aliases:
-          - simple.local
