@@ -8,12 +8,16 @@ services:
       MYSQL_ROOT_PASSWORD: 'default'
       TZ: Europe/Moscow
     ports:
-     - "3306:3306"
-   
+      - "3306:3306"
+
   nginx:
     container_name: simple.nginx
     build:
       context: .
+      args:
+        ENV: production # development or production
+    environment:
+      TZ: Europe/Moscow
     ports:
       - "8080:8080"
     volumes:
